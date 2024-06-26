@@ -42,6 +42,7 @@ jobs:
           username: ${{ secrets.NAS_USERNAME }}
           password: ${{ secrets.NAS_PASSWORD }}
           script: |
+            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin
             docker rm -f discovery
             docker pull ${{ secrets.DOCKER_USERNAME }}/discovery
             docker run -d --name discovery --restart=unless-stopped -p 8761:8761 --network=notiflex ${{ secrets.DOCKER_USERNAME }}/discovery:latest
