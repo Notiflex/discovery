@@ -44,6 +44,6 @@ jobs:
           script: |
             docker rm -f discovery
             docker pull ${{ secrets.DOCKER_USERNAME }}/discovery
-            docker run -d --name discovery --restart=unless-stopped -p 8761:8761 --network=notiflex ${{ secrets.DOCKER_REPO }}/discovery:latest
+            docker run -d --name discovery --restart=unless-stopped -p 8761:8761 --network=notiflex ${{ secrets.DOCKER_USERNAME }}/discovery:latest
 
 
