@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,5 +46,6 @@ jobs:
             docker rm -f discovery
             docker pull ${{ secrets.DOCKER_USERNAME }}/discovery
             docker run -d --name discovery --restart=unless-stopped -p 8761:8761 --network=notiflex ${{ secrets.DOCKER_USERNAME }}/discovery:latest
+            docker rmi $(docker images -f "dangling=true" -q)
 
 
